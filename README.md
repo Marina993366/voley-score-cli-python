@@ -1,2 +1,15 @@
 # voley-score-cli-python
-Aplicación simple en Python que permite registrar partidos de vóley desde la consola
+
+# 🏐 Registro de partidos de vóley (Python CLI)
+
+Aplicación simple en Python que permite registrar partidos de vóley desde la consola y generar un resumen del resultado.
+
+## 🎯 Objetivo
+Practicar lógica de programación y estructuras básicas en Python.
+
+## 🛠️ Tecnologías
+- Python 3
+
+## ▶️ Ejecución
+```bash
+python main.py
