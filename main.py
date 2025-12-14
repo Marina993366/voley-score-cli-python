@@ -8,27 +8,29 @@ def pedir_puntos(equipo):
     puntos = int(input(f"Ingrese los puntos del equipo {equipo}: "))
     return puntos
 
+# determinar el ganador del set
 def jugar_set(equipo_a, equipo_b):
     puntos_a = pedir_puntos(equipo_a)
     puntos_b = pedir_puntos(equipo_b)
 
     if puntos_a > puntos_b:
         print(f"Gana el set {equipo_a}")
-        return "A"
+        return equipo_a
     elif puntos_b > puntos_a:
         print(f"Gana el set {equipo_b}")
-        return "B"
+        return equipo_b
     else:
         print("Error: Los puntos no pueden ser iguales en un set de Vóley.")
         return None
     
+def main():
+
 # imprimir mensaje de bienvenida
-print("=======================================================")
-print("Bienvenido al programa de gestión de partidos de Voley.")
-print("=======================================================")
+    print("=======================================================")
+    print("Bienvenido al programa de gestión de partidos de Voley.")
+    print("=======================================================")
 
 # pedir nombres de los equipos
-def main():
     equipo_a = pedir_equipo("A")
     equipo_b = pedir_equipo("B")
 
@@ -42,15 +44,16 @@ def main():
     sets_a = 0
     sets_b = 0
 
+# jugar los sets hasta que un equipo gane 3 sets
     while num_set <= 5 and sets_a < 3 and sets_b < 3:
         print(f"\n--- Set {num_set} ---")
 
         ganador = jugar_set(equipo_a, equipo_b)
 
-        if ganador == "A":
+        if ganador == equipo_a:
             sets_a += 1
             num_set += 1
-        elif ganador == "B":
+        elif ganador == equipo_b:
             sets_b += 1
             num_set += 1
         else:
