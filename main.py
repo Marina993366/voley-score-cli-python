@@ -13,15 +13,29 @@ def jugar_set(equipo_a, equipo_b):
     puntos_a = pedir_puntos(equipo_a)
     puntos_b = pedir_puntos(equipo_b)
 
-    if puntos_a > puntos_b:
-        print(f"Gana el set {equipo_a}")
-        return equipo_a
-    elif puntos_b > puntos_a:
-        print(f"Gana el set {equipo_b}")
-        return equipo_b
-    else:
-        print("Error: Los puntos no pueden ser iguales en un set de Vóley.")
-        return None
+    diferencia = abs(puntos_a - puntos_b)
+
+# Caso 1: alguien llega a 25 puntos exactos con al menos 2 de diferencia
+    if (puntos_a == 25 or puntos_b == 25) and diferencia >= 2:
+        if puntos_a > puntos_b:
+            print(f"Gana el set {equipo_a}")
+            return equipo_a
+        else:
+            print(f"Gana el set {equipo_b}")
+            return equipo_b
+
+# Caso 2: se supera el 25 (debe haber EXACTAMENTE 2 de diferencia)
+    if puntos_a > 25 or puntos_b > 25:
+        if diferencia == 2:
+            if puntos_a > puntos_b:
+                print(f"Gana el set {equipo_a}")
+                return equipo_a
+            else:
+                print(f"Gana el set {equipo_b}")
+                return equipo_b
+
+    print("El set no es válido. Debe ganarse con 25 puntos o más y 2 de diferencia.")
+    return None
     
 def main():
 
@@ -47,7 +61,6 @@ def main():
 # jugar los sets hasta que un equipo gane 3 sets
     while num_set <= 5 and sets_a < 3 and sets_b < 3:
         print(f"\n--- Set {num_set} ---")
-
         ganador = jugar_set(equipo_a, equipo_b)
 
         if ganador == equipo_a:
